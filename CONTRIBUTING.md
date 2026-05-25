@@ -1,170 +1,170 @@
-[English](./CONTRIBUTING.md) | [日本語](./CONTRIBUTING_ja.md)
+[English](./CONTRIBUTING_en.md) | [日本語](./CONTRIBUTING.md)
 
-# Contributing
+# コントリビューション
 
-Thank you for your interest in contributing to the SDD repository.
+SDDリポジトリへのコントリビューションに関心を持っていただき、ありがとうございます。
 
-## How to Contribute
+## 貢献の方法
 
-### Bug Reports
+### バグ報告
 
-If you find errors in sample files, typos in documentation, or broken links, please create a GitHub Issue.
+サンプルファイルの誤り、ドキュメントの誤字、リンク切れなどを発見した場合は、GitHub Issue を作成してください。
 
-**Required information for Issue creation:**
-- A clear and descriptive title
-- Steps to reproduce the problem
-- Expected behavior
-- Actual behavior (for typos, include the specific location and content)
-- Sample file or relevant excerpt where the issue was found (if possible)
-- Version or commit hash of the file where the issue was found
+**Issue 作成時の必須情報：**
+- 明確で説明的なタイトル
+- 問題を再現する手順
+- 期待される動作
+- 実際の動作（誤字の場合は具体的な箇所と内容）
+- 問題が確認できるサンプルファイルまたは該当箇所の引用（可能であれば）
+- 問題が見つかったファイルのバージョンまたはコミットハッシュ
 
-### Feature Requests
+### 機能改善の提案
 
-Proposals to add new sample files or guides, or to improve existing content, are accepted via GitHub Issues.
+新しいサンプルファイルやガイドの追加、既存コンテンツの改善提案は GitHub Issue で受け付けています。
 
-**Required information for Issue creation:**
-- A clear and descriptive title
-- Detailed description of the proposed feature or addition
-- Use cases and benefits
-- Related examples or references (if available)
+**Issue 作成時の必須情報：**
+- 明確で説明的なタイトル
+- 提案する機能・追加内容の詳細な説明
+- ユースケースとメリット
+- 関連する例や参考資料（可能であれば）
 
-### Pull Requests
+### プルリクエスト
 
-1. Fork this repository
-2. Create a branch using the following naming convention:
+1. このリポジトリをフォークする
+2. 以下の命名規則でブランチを作成する：
    ```
-   {GitHubUsername}/{YYYYMMDD}-{brief-description}
+   {GitHubユーザー名}/{YYYYMMDD}-{内容の概要}
    ```
-   Example: `yamada/20260226-examples-typo-fix`
-3. Make changes following the [Coding Guidelines](#coding-guidelines)
-4. Update related documentation as needed
-5. Verify your changes using an AI agent (see [Running Tests](#running-tests))
-6. Commit following the commit message rules (see [Commit Message Rules](#commit-message-rules))
-7. Push your branch and submit a Pull Request
-8. Respond to review feedback
+   例：`yamada/20260226-examples-typo-fix`
+3. [コーディングガイドライン](#コーディングガイドライン) に従って変更を加える
+4. 必要に応じて関連ドキュメントを更新する
+5. AIエージェントで変更内容を検証する（[テストの実行方法](#テストの実行方法) 参照）
+6. コミットメッセージのルールに従ってコミットする（[コミットメッセージのルール](#コミットメッセージのルール)参照）
+7. ブランチをプッシュして Pull Request を送信する
+8. レビューのフィードバックに対応する
 
-## Development Environment Setup
+## 開発環境のセットアップ
 
-**Prerequisites:**
-- Git (recent version)
-- Text editor (Cursor recommended)
-- GitHub account
+**前提条件：**
+- Git（最近のバージョン）
+- テキストエディタ（Cursor 推奨）
+- GitHub アカウント
 
-**Setup steps:**
+**セットアップ手順：**
 ```bash
-# Clone your forked repository
-git clone https://github.com/your-username/SDD.git
+# フォークしたリポジトリをクローン
+git clone https://github.com/あなたのユーザー名/SDD.git
 cd SDD
 ```
 
-No additional dependencies are required for contributing to documentation and sample files.
+ドキュメント・サンプルファイルへのコントリビューションには追加の依存関係は不要です。
 
-If you are contributing to **`spec-ai-writer/`**, additional setup is required:
+**`spec-ai-writer/`** へのコントリビューションには追加のセットアップが必要です：
 
 ```bash
 cd spec-ai-writer
-uv sync --extra dev   # Python dependencies (requires Python 3.10+)
-cd frontend && npm install  # TypeScript/React dependencies
+uv sync --extra dev   # Python 依存関係（Python 3.10 以上が必要）
+cd frontend && npm install  # TypeScript/React 依存関係
 ```
 
-## Running Tests
+## テストの実行方法
 
-For documentation and sample files, there is no source code test policy. Please verify changed documents using an **AI agent** as a substitute for testing.
+ドキュメント・サンプルファイルの変更については、ソースコードのテスト方針はありません。変更したドキュメントを **AIエージェントで検証** することをテストとして実施してください。
 
-For **`spec-ai-writer/`** source code changes, run the test suite:
+**`spec-ai-writer/`** のソースコードを変更した場合は、テストスイートを実行してください：
 
 ```bash
 # Python
 cd spec-ai-writer
 pytest
 
-# Frontend (TypeScript/React)
+# フロントエンド（TypeScript/React）
 cd spec-ai-writer/frontend
 npm test
 ```
 
-**Verification steps:**
+**検証手順：**
 
-1. Open the changed file in Claude Code or Cursor
-2. Ask the AI agent to verify the changes against the relevant rule file:
+1. 変更したファイルを Claude Code または Cursor で開く
+2. AIエージェントに対して、変更内容と該当ルールファイルを指定して検証を依頼する
 
    ```
-   @changed-file Does this file comply with @rule-file? Please check.
+   @変更したファイル このファイルは @ルールファイル のルールに従っていますか？確認してください。
    ```
 
-3. Fix all mandatory item deficiencies identified
-4. Review recommended item suggestions and decide whether to address them
+3. 指摘された必須項目の不備をすべて修正する
+4. 推奨項目の指摘は内容を確認し、対応するか判断する
 
-**Verification targets:**
-- Document additions/changes → Cross-check with the corresponding rule file (e.g., `contributing-requirements.md`)
-- Sample file changes → Cross-check with the Spec-Driven Development process guidelines
+**検証の対象例：**
+- ドキュメントの追加・変更 → 対応するルールファイル（`contributing-requirements.md` など）と照合
+- サンプルファイルの変更 → 仕様駆動開発の各工程のガイドラインと照合
 
-Submit your PR once the AI agent confirms no mandatory item deficiencies remain.
+AIエージェントの指摘で必須項目の不備がなくなった状態でPRを送信してください。
 
-## Commit Message Rules
+## コミットメッセージのルール
 
-Use the following format:
+以下のフォーマットを使用してください：
 
 ```
-<type>: <brief description>
+<タイプ>: <簡潔な説明>
 
-<optional detailed description>
+<任意の詳細説明>
 ```
 
-**Types:**
-- `fix`: Bug fix or typo correction
-- `docs`: Documentation update
-- `feat`: Adding new sample files or guides
-- `refactor`: Reorganizing or restructuring content without changing meaning
-- `chore`: Repository configuration or maintenance
+**タイプ：**
+- `fix`: バグ修正・誤字修正
+- `docs`: ドキュメントの更新
+- `feat`: 新しいサンプルファイルやガイドの追加
+- `refactor`: 意味を変えずに内容を整理・再構成
+- `chore`: リポジトリの設定やメンテナンス
 
-**Good examples:**
+**良い例：**
 ```
-fix: Fix typo in examples/02-planning-requirement.md
-docs: Add Git push error troubleshooting
-feat: Add sample for multi-team projects
-```
-
-**Bad examples:**
-```
-Update file
-Bug fix
+fix: examples/02-planning-requirement.md の誤字を修正
+docs: Git push エラーのトラブルシューティングを追加
+feat: マルチチーム向けプロジェクトのサンプルを追加
 ```
 
-When referencing an Issue or PR, add `Fixes #123` or `Refs #123` at the end of the commit message body.
+**悪い例：**
+```
+ファイルを更新
+バグ修正
+```
 
-## Coding Guidelines
+Issue や PR を参照する場合は、コミットメッセージ本文末尾に `Fixes #123` または `Refs #123` を記載してください。
 
-Since this repository consists of Markdown files, please follow these guidelines:
+## コーディングガイドライン
 
-- Use a hierarchical heading structure without skipping levels
-- Specify language identifiers in code blocks (e.g., ` ```bash `, ` ```markdown `)
-- Use relative paths for links within the repository (e.g., `[CHANGELOG.md](CHANGELOG.md)`)
-- Use ISO 8601 format for dates (`YYYY-MM-DD`)
+本リポジトリは Markdown ファイルで構成されているため、以下のガイドラインに従ってください：
 
-## Releasing `spec-ai-writer`
+- 見出しは階層構造を意識し、レベルを飛ばさない
+- コードブロックには言語識別子を指定する（例：` ```bash `、` ```markdown `）
+- リポジトリ内のリンクは相対パスで記載する（例：`[CHANGELOG.md](CHANGELOG.md)`）
+- 日付は ISO 8601 形式で記載する（`YYYY-MM-DD`）
 
-The `spec-ai-writer` sub-project ships as both a Python package and a React frontend bundled together. The version number **must be identical** in every location below; a mismatch between the Python package and the frontend makes release notes and support requests ambiguous.
+## `spec-ai-writer` のリリース手順
 
-When bumping the version (e.g. `1.0.3` → `1.0.4`), update **all** of the following in the same commit:
+`spec-ai-writer` サブプロジェクトは Python パッケージと React フロントエンドを同梱して配布します。バージョン番号は **以下のすべての箇所で完全に一致させる必要があります**。Python パッケージとフロントエンドでバージョンがずれると、リリースノートやサポート対応の際にどの版の話か不明確になります。
 
-| File | Field |
-|------|-------|
+バージョンを上げる際（例：`1.0.3` → `1.0.4`）は、必ず **同一コミット内で** 以下のすべてを更新してください。
+
+| ファイル | フィールド |
+|---------|----------|
 | `spec-ai-writer/pyproject.toml` | `[project] version` |
-| `spec-ai-writer/frontend/package.json` | top-level `version` |
-| `CHANGELOG.md` / `CHANGELOG_ja.md` | new `## [X.Y.Z] - YYYY-MM-DD` section |
+| `spec-ai-writer/frontend/package.json` | トップレベルの `version` |
+| `CHANGELOG.md` / `CHANGELOG_en.md` | 新しい `## [X.Y.Z] - YYYY-MM-DD` セクション |
 
-After editing, run `uv sync --extra dev` inside `spec-ai-writer/` and `npm install` inside `spec-ai-writer/frontend/` to regenerate the lockfiles. The Python source and React component read the version at runtime, so no further edits are needed. A quick sanity check:
+編集後は `spec-ai-writer/` 内で `uv sync --extra dev` を、`spec-ai-writer/frontend/` 内で `npm install` を実行してロックファイルを再生成してください。Pythonソースと Reactコンポーネントはバージョンをランタイムに取得するため、それ以外のファイル編集は不要です。整合性は次のコマンドで素早く確認できます。
 
 ```bash
 grep -E "^version" spec-ai-writer/pyproject.toml
 grep '"version"' spec-ai-writer/frontend/package.json | head -1
 ```
 
-Both lines should show the same version. If any drift is found, fix it in the same commit rather than deferring — out-of-band fixes make `git blame` harder to read.
+両行のバージョンが一致していれば OK です。ずれを見つけた場合は、後回しにせずその場で同一コミットに含めて修正してください（後から小さな修正コミットを積むと `git blame` が読みにくくなります）。
 
-## Contact
+## 問い合わせ先
 
 - **GitHub Issues**: [https://github.com/elvezjp/SDD/issues](https://github.com/elvezjp/SDD/issues)
-- **Email**: info@elvez.co.jp
-- **Recipient**: Elvez Inc. (株式会社エルブズ)
+- **メールアドレス**: info@elvez.co.jp
+- **宛先**: 株式会社エルブズ

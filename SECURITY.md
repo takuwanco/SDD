@@ -1,66 +1,66 @@
-[English](./SECURITY.md) | [日本語](./SECURITY_ja.md)
+[English](./SECURITY_en.md) | [日本語](./SECURITY.md)
 
-# Security Policy
+# セキュリティポリシー
 
-## Supported Versions
+## サポートバージョン
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| バージョン | サポート状況       |
+| ---------- | ------------------ |
+| 1.0.x      | :white_check_mark: |
+| < 1.0      | :x:                |
 
-We recommend always using the latest version.
+常に最新バージョンの使用を推奨します。
 
-## Reporting a Vulnerability
+## 脆弱性の報告方法
 
-**Please do not report security vulnerabilities through public GitHub Issues.**
+**公開の GitHub Issue でセキュリティ脆弱性を報告しないでください。**
 
-If you discover a security vulnerability, please contact us at the following email address:
+セキュリティ上の脆弱性を発見した場合は、以下のメールアドレスにご連絡ください：
 
-- **Email**: info@elvez.co.jp
-- **Recipient**: Elvez Inc. (株式会社エルブズ)
+- **メールアドレス**: info@elvez.co.jp
+- **宛先**: 株式会社エルブズ
 
-### Information to Include in Your Report
+### 報告に含めるべき情報
 
-Please provide the following information:
+以下の情報をご報告ください：
 
-- Description of the vulnerability
-- Steps to reproduce the issue
-- Potential impact and severity
-- Suggested fix or mitigation (if available)
-- Contact information (optional)
+- 脆弱性の説明
+- 問題を再現する手順
+- 潜在的な影響と重大度
+- 修正案や緩和策の提案（可能であれば）
+- 連絡先情報（任意）
 
-## Response Schedule
+## 対応スケジュール
 
-- **Initial response**: Within 48 hours
-- **Status update**: Within 7 days
-- **Resolution**: Depending on severity
-  - Critical: Within 14 days
-  - High: Within 30 days
-  - Medium: Within 60 days
-  - Low: Next release cycle
+- **初回応答**: 48時間以内
+- **状況更新**: 7日以内
+- **解決**: 重大度に応じて
+  - 緊急: 14日以内
+  - 高: 30日以内
+  - 中: 60日以内
+  - 低: 次回リリースサイクル
 
-## Security Considerations
+## セキュリティに関する考慮事項
 
-This repository contains Markdown documents and sample files, as well as executable Python and TypeScript code in `spec-ai-writer/`. Please be aware of the following:
+本リポジトリは Markdown ドキュメント・サンプルファイルに加え、`spec-ai-writer/` に Python および TypeScript の実行可能コードを含みます。以下の点にご注意ください：
 
-- **File contents**: Sample files are for illustrative purposes only and do not contain actual credentials, API keys, or personal information
-- **Links**: External links in documents point to public resources, but please verify URLs before clicking
-- **Scripts**: Scripts in `docs/tools/scripts.md` are examples only. Please review the content thoroughly before executing in your environment
-- **Dependencies**: This repository uses Python and npm packages. Run `pip audit` and `npm audit` regularly to check for known vulnerabilities in dependencies
+- **ファイルの内容**: サンプルファイルはあくまで例示目的であり、実際の認証情報・API キー・個人情報は含まれていません
+- **リンク**: ドキュメント内の外部リンクは公開リソースを指していますが、クリック前に URL を確認してください
+- **スクリプト**: `docs/tools/scripts.md` のスクリプトはあくまで例示です。実際の環境で実行する前に内容を十分に確認してください
+- **依存関係**: 本リポジトリは Python および npm パッケージを使用しています。`pip audit` および `npm audit` を定期的に実行し、依存関係の既知の脆弱性を確認することを推奨します
 
-## Security Best Practices
+## セキュリティのベストプラクティス
 
-When using this repository, we recommend:
+本リポジトリを利用する際は、以下を推奨します：
 
-1. Always use the latest version
-2. When forking and modifying, do not include actual credentials or personal information in files
-3. When adding scripts, test them in a sandbox environment before use
-4. Verify that external links point to the intended URL before clicking
+1. 常に最新バージョンを使用する
+2. フォークして改変する場合、実際の認証情報や個人情報をファイルに含めない
+3. スクリプトを追加する場合は、サンドボックス環境でテストしてから使用する
+4. 外部リンクはクリック前に意図した URL を指しているか確認する
 
-## Contact
+## 問い合わせ先
 
-For security-related questions that are not vulnerability reports:
+脆弱性報告ではないセキュリティ関連の質問：
 
-- **GitHub Issues**: [https://github.com/elvezjp/SDD/issues](https://github.com/elvezjp/SDD/issues) (please add the `security` label)
-- **Email**: info@elvez.co.jp
+- **GitHub Issues**: [https://github.com/elvezjp/SDD/issues](https://github.com/elvezjp/SDD/issues)（`security` ラベルを付けてください）
+- **メールアドレス**: info@elvez.co.jp

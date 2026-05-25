@@ -1,111 +1,111 @@
-[English](./CHANGELOG.md) | [日本語](./CHANGELOG_ja.md)
+[English](./CHANGELOG_en.md) | [日本語](./CHANGELOG.md)
 
-# Changelog
+# 変更履歴
 
-All notable changes to this project will be documented in this file.
+このプロジェクトのすべての重要な変更を記録します。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づき、
+バージョン管理は [セマンティックバージョニング](https://semver.org/lang/ja/) に準拠しています。
 
 ---
 
 ## [Unreleased]
 
-### Changed
+### 変更
 
-- **spec-ai-writer / Dependency security updates**: Updated all Python and frontend packages to the latest compatible versions.
+- **spec-ai-writer / 依存ライブラリのセキュリティアップデート**: 全 Python およびフロントエンドパッケージを最新化。
 
 ---
 
 ## [1.0.4] - 2026-04-17
 
-### Added
+### 追加
 
-- **spec-ai-writer / `--log-level` global option**: Added `--log-level [debug|info|warning|error]` (default: `warning`) to the CLI group. Stack traces are now shown only when `--log-level=debug` is specified, preventing accidental exposure of file paths or API key fragments on error. Exception handlers across all commands (`start`, `resume`, `status`, `_generate_specs`) have been unified to follow the same pattern (Issue #48).
+- **spec-ai-writer / `--log-level` グローバルオプション**: CLI グループに `--log-level [debug|info|warning|error]`（デフォルト: `warning`）を追加。エラー時のスタックトレースは `--log-level=debug` 指定時のみ表示されるようになり、ファイルパスや API キーの断片が意図せず端末に出力されることを防ぎます。`start`・`resume`・`status`・`_generate_specs` の例外ハンドラをすべて同じパターンに統一しました（Issue #48）。
 
-### Changed
+### 変更
 
-- **spec-ai-writer / Dependency security updates**: Updated all Python and frontend dependencies to the latest compatible versions to address 9 Dependabot security alerts (vite, axios, follow-redirects, black, pytest, Pygments). Removed unused packages `python-multipart` (Dependabot alert #39) and `rich` from `pyproject.toml` (Issue #72).
+- **spec-ai-writer / 依存ライブラリのセキュリティアップデート**: Dependabotから報告された9件のセキュリティアラート（vite・axios・follow-redirects・black・pytest・Pygments）に対応するため、全PythonおよびフロントエンドパッケージをDependabotアラートの修正バージョンへ更新。未使用パッケージ `python-multipart`（Dependabotアラート #39）と `rich` を `pyproject.toml` から削除（Issue #72）。
 
-### Fixed
+### 修正
 
-- **spec-ai-writer / Interview resume from mid-phase**: When a user navigated away from the interview screen mid-phase and returned, the interview restarted from the first question of that phase and all chat history was lost. Root cause: the pending (unanswered) question was never persisted, so only already-answered Q&A pairs were stored. Fixed by adding a `pending_question` field to `interview.json` that is written immediately after each question is generated and cleared when the user answers. On resume, the stored pending question is returned and the full Q&A history (including completed phases) is restored on screen (Issue #67).
+- **spec-ai-writer / インタビュー途中再開と履歴復元**: インタビュー画面から別画面へ遷移して戻ると、工程の先頭からやり直しになり画面上のチャット履歴がすべて消える不具合を修正。根本原因は、LLM が生成した未回答の質問が `interview.json` に保存されておらず離脱時に失われていたこと。`interview.json` に `pending_question` フィールドを追加し、質問生成直後に保存・回答時に自動クリアする設計に変更。再訪時は保存済みの質問から再開でき、完了済み工程を含むすべての Q&A 履歴が画面に復元されるようになりました (Issue #67)。
 
 ---
 
 ## [1.0.3] - 2026-04-14
 
-### Added
+### 追加
 
-- **spec-ai-writer / OpenRouter & Local LLM support**: The existing `openai` provider now accepts `OPENAI_BASE_URL` and `OPENAI_MODEL`, making it a unified path for the official OpenAI API, OpenRouter, and OpenAI-compatible local servers (Ollama, LM Studio, llama.cpp). When `OPENAI_BASE_URL` points at a local endpoint, `OPENAI_API_KEY` may be left empty (Issue #59).
-- **spec-ai-writer / Web UI settings page**: New `/settings` page in the dashboard lets users edit the active provider, base URL, model ID, API keys and temperature without restarting the server. Presets are provided for OpenAI Official / OpenRouter / Ollama / LM Studio / Custom (Issue #59).
-- **spec-ai-writer / Settings persistence layer**: LLM settings edited from the UI are written atomically to `data/llm_settings.json` with `0600` permissions and overlaid on top of environment variables. `GET /api/settings/llm` returns masked API keys; `PUT /api/settings/llm` ignores empty key fields so re-submitting a masked display value never overwrites the stored secret (Issue #59).
+- **spec-ai-writer / OpenRouter・ローカル LLM 対応**: 既存の `openai` プロバイダが `OPENAI_BASE_URL` と `OPENAI_MODEL` を受け付けるようになり、OpenAI 公式 API・OpenRouter・OpenAI 互換ローカルサーバー（Ollama, LM Studio, llama.cpp）を単一の経路で扱えるようになりました。`OPENAI_BASE_URL` がローカルエンドポイントを指している場合は `OPENAI_API_KEY` を空欄にできます（Issue #59）。
+- **spec-ai-writer / Web UI 設定ページ**: ダッシュボードに新しい `/settings` ページを追加。プロバイダ・Base URL・モデル ID・API キー・Temperature をサーバー再起動なしで編集できます。OpenAI 公式 / OpenRouter / Ollama / LM Studio / カスタムのプリセットを用意（Issue #59）。
+- **spec-ai-writer / 設定の永続化レイヤ**: UI から編集した LLM 設定は `data/llm_settings.json` にアトミックに書き込まれ（パーミッション `0600`）、環境変数より優先して適用されます。`GET /api/settings/llm` は API キーをマスクして返し、`PUT /api/settings/llm` は空の API キーを無視するため、マスク表示値を再送信しても保存済みの秘密情報を上書きすることはありません（Issue #59）。
 
-### Changed
+### 変更
 
-- **spec-ai-writer / `reload_settings()`**: Now mutates the existing global Settings instance in place so that module-level references captured by routers observe the updated values without a process restart.
-- **spec-ai-writer / `.env.example`**: Added `OPENAI_BASE_URL` and `OPENAI_MODEL` entries with usage examples for OpenRouter, Ollama and LM Studio.
-- **spec-ai-writer / `docs/LLM_SETUP.md`**: Added OpenRouter and Local LLM (Ollama / LM Studio / llama.cpp) setup sections and a note about the Web UI settings page.
+- **spec-ai-writer / `reload_settings()`**: グローバル Settings インスタンスを in-place で更新するよう変更。ルーターがモジュールレベルで保持している参照が、プロセス再起動なしで新しい値を観測できるようになりました。
+- **spec-ai-writer / `.env.example`**: `OPENAI_BASE_URL` と `OPENAI_MODEL` の項目を追加し、OpenRouter・Ollama・LM Studio 用の使用例を記載。
+- **spec-ai-writer / `docs/LLM_SETUP.md`**: OpenRouter およびローカル LLM（Ollama / LM Studio / llama.cpp）のセットアップ章を追加し、Web UI 設定ページに関する注記を追記。
 
-### Fixed
+### 修正
 
-- **spec-ai-writer / Version alignment between Python package and frontend**: Unified the `spec-ai-writer` version across `pyproject.toml`, `uv.lock`, `frontend/package.json`, `frontend/package-lock.json`, the FastAPI app metadata, the Click CLI banner and the dashboard footer. All now report **1.0.3** (Issue #60).
-- **CONTRIBUTING.md / CONTRIBUTING_ja.md**: Added a "Releasing spec-ai-writer" section documenting which files must be bumped together so this desynchronization cannot recur (Issue #60).
+- **spec-ai-writer / Python パッケージとフロントエンドのバージョン統一**: `pyproject.toml`・`uv.lock`・`frontend/package.json`・`frontend/package-lock.json`・FastAPI アプリのメタデータ・Click CLI バナー・ダッシュボードフッターのバージョン表記を統一し、すべて **1.0.3** を報告するようになりました（Issue #60）。
+- **CONTRIBUTING.md / CONTRIBUTING_ja.md**: 同じ不整合が再発しないよう、一緒にバージョンを上げるべきファイル一覧を含む「spec-ai-writer のリリース手順」セクションを追加しました（Issue #60）。
 
 ---
 
 ## [1.0.2] - 2026-04-07
 
-### Fixed
+### 修正
 
-- **spec-ai-writer / CSP (Content Security Policy)**: Fixed CSP error when accessing via 127.0.0.1 in production mode (Issue #56)
-- **spec-ai-writer / `.env.example`**: Fixed API base URL description (Issue #56)
+- **spec-ai-writer / CSP（Content Security Policy）**: 本番モードで127.0.0.1経由アクセス時のCSPエラーを修正（Issue #56）
+- **spec-ai-writer / `.env.example`**: APIベースURLの説明を修正（Issue #56）
 
 ---
 
 ## [1.0.1] - 2026-03-24
 
-### Changed
+### 変更
 
-- **README.md / README_ja.md**: Added spec-ai-writer section with link to `spec-ai-writer/README.md` and unified section order between English and Japanese versions
-- **spec-ai-writer/README.md**: Added Python and TypeScript language/framework badges
-- **CHANGELOG.md / CONTRIBUTING.md / SECURITY.md**: Split into English default + `_ja.md` Japanese versions with language switch links
+- **README.md / README_ja.md**: spec-ai-writer セクションを追加し `spec-ai-writer/README.md` へのリンクを記載、日英間でセクション順序を統一
+- **spec-ai-writer/README.md**: Python・TypeScript の言語/フレームワークバッジを追加
+- **CHANGELOG.md / CONTRIBUTING.md / SECURITY.md**: 英語版デフォルト + `_ja.md` 日本語版に分離し、言語切り替えリンクを追加
 
 ---
 
 ## [1.0.0] - 2026-02-26
 
-Initial release. Published as the practice repository for *Spec-Driven Development: A Practical Introduction*.
+初回リリース。『仕様駆動開発 実践入門』の練習用リポジトリとして公開。
 
-### Added
+### 追加
 
-- **Sample files (7 processes)**: Sample files for all 7 processes of Spec-Driven Development (using a Customer Management System as the subject)
-- **Practical guides**: Scale-based practice guide, 90-day introduction plan, security and privacy guide, troubleshooting guide, and more
-- **Tool documentation**: Cursor video list, Git command reference, prompt collection, script collection
-- **Conversion guides**: Word/Excel and OASYS/Ichitaro to Markdown conversion guides
-- **spec-ai-writer**: AI tool for Spec-Driven Development support
-- **Publication documents**: README.md (English), README_ja.md (Japanese), CONTRIBUTING.md, SECURITY.md, CHANGELOG.md, LICENSE
+- **サンプルファイル（7工程）**: 仕様駆動開発の7つの工程に対応したサンプルファイル群（顧客管理システムを題材として）
+- **実践ガイド群**: 規模別実践ガイド、90日間導入プラン、セキュリティとプライバシーガイド、トラブルシューティングなど
+- **ツール関連ドキュメント**: Cursor関連動画一覧、Gitコマンド一覧、プロンプト集、スクリプト集
+- **変換ガイド**: Word/Excel・OASYS/一太郎からMarkdownへの変換ガイド
+- **spec-ai-writer**: 仕様駆動開発支援AIツール
+- **公開用ドキュメント**: README.md（英語）、README_ja.md（日本語）、CONTRIBUTING.md、SECURITY.md、CHANGELOG.md、LICENSE
 
-### Technical Details
+### 技術詳細
 
-- This repository consists solely of Markdown files (no executable code)
-- License: MIT (Copyright (c) 2025 Hideki Tanaka)
-
----
-
-## Links
-
-- [Repository](https://github.com/elvezjp/SDD)
-- [Issue Tracker](https://github.com/elvezjp/SDD/issues)
+- 本リポジトリは Markdown ファイルのみで構成（実行可能なコードなし）
+- ライセンス: MIT（Copyright (c) 2025 Hideki Tanaka）
 
 ---
 
-## Version Comparison
+## リンク
 
-| Version | Key Features |
-|---------|-------------|
-| 1.0.4   | `--log-level` CLI option, interview resume fix (Issue #48, #67) |
-| 1.0.3   | OpenRouter & Local LLM support, Web UI settings, version alignment (Issue #59, #60) |
-| 1.0.2   | CSP fix, .env.example fix (Issue #56) |
-| 1.0.1   | GitHub publication rule compliance: README improvements, doc split into English/Japanese |
-| 1.0.0   | Initial release: 7-process samples, practical guides, spec-ai-writer, publication documents |
+- [リポジトリ](https://github.com/elvezjp/SDD)
+- [Issueトラッカー](https://github.com/elvezjp/SDD/issues)
+
+---
+
+## バージョン比較
+
+| バージョン | 主な機能 |
+|------------|----------|
+| 1.0.4      | `--log-level` CLIオプション、インタビュー途中再開修正（Issue #48, #67） |
+| 1.0.3      | OpenRouter・ローカルLLM対応、Web UI設定ページ、バージョン統一（Issue #59, #60） |
+| 1.0.2      | CSP修正、.env.example修正（Issue #56） |
+| 1.0.1      | GitHub公開ルール対応：README改善、ドキュメントの日英2ファイル化 |
+| 1.0.0      | 初回リリース。7工程サンプル、ガイド群、spec-ai-writer、公開用ドキュメント |
