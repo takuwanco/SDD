@@ -1,6 +1,6 @@
 # SDD（仕様駆動開発） 練習用リポジトリ
 
-[English](./README.md) | [日本語](./README_ja.md)
+[English](./README_en.md) | [日本語](./README.md)
 
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
