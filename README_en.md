@@ -1,12 +1,12 @@
 > [!NOTE]
 > **日本語版をお探しの方へ**
 > このリポジトリは書籍『仕様駆動開発 実践入門』の練習用リポジトリです。
-> 日本語の README は [README_ja.md](./README_ja.md) をご覧ください。
+> 日本語の README は [README.md](./README.md) をご覧ください。
 > **書籍の正誤表は[こちら](./docs/guides/errata.md)です。**
 
 # SDD (Spec-Driven Development) Practice Repository
 
-[English](./README.md) | [日本語](./README_ja.md)
+[English](./README_en.md) | [日本語](./README.md)
 
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
@@ -120,12 +120,12 @@ Once you have finished editing locally:
 
 ```
 SDD/
-├── README.md                    # This file (English)
-├── README_ja.md                 # Japanese version
+├── README.md                    # Japanese version
+├── README_en.md                 # This file (English)
 ├── LICENSE                      # MIT License
-├── CONTRIBUTING.md              # Contribution guidelines
-├── SECURITY.md                  # Security policy
-├── CHANGELOG.md                 # Version history
+├── CONTRIBUTING.md              # Contribution guidelines (Japanese)
+├── SECURITY.md                  # Security policy (Japanese)
+├── CHANGELOG.md                 # Version history (Japanese)
 ├── docs/                        # Supplementary materials
 │   ├── README.md               # Guide index
 │   ├── conversion/             # Conversion guides
@@ -276,20 +276,20 @@ This remote repository is maintained for reference. Please note the following:
 
 ## Documentation
 
-- [CHANGELOG.md](CHANGELOG.md) - Version history
-- [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute
-- [SECURITY.md](SECURITY.md) - Security policy
+- [CHANGELOG_en.md](CHANGELOG_en.md) - Version history
+- [CONTRIBUTING_en.md](CONTRIBUTING_en.md) - How to contribute
+- [SECURITY_en.md](SECURITY_en.md) - Security policy
 
 ## Security
 
-For security details, see [SECURITY.md](SECURITY.md).
+For security details, see [SECURITY_en.md](SECURITY_en.md).
 
 - This repository consists solely of documentation and sample files; no executable code is included
 - If you discover a vulnerability, please report it by email rather than opening a public Issue (info@elvez.co.jp)
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are welcome. See [CONTRIBUTING_en.md](CONTRIBUTING_en.md) for details.
 
 - Bug reports / typo fixes: [GitHub Issues](https://github.com/elvezjp/SDD/issues)
 - Feature proposals (new samples/guides, etc.): [GitHub Issues](https://github.com/elvezjp/SDD/issues)
@@ -297,7 +297,7 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for details.
+See [CHANGELOG_en.md](CHANGELOG_en.md) for details.
 
 ## Background
 

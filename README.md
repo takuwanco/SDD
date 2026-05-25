@@ -114,12 +114,12 @@ Cursor の最新版では、**メニューに「File > Clone Repository」が表
 
 ```
 SDD/
-├── README.md                    # このファイル（英語版）
-├── README_ja.md                 # 日本語版
+├── README.md                    # このファイル（日本語版）
+├── README_en.md                 # 英語版
 ├── LICENSE                      # MITライセンス
-├── CONTRIBUTING.md              # コントリビューションガイド
-├── SECURITY.md                  # セキュリティポリシー
-├── CHANGELOG.md                 # バージョン履歴
+├── CONTRIBUTING.md              # コントリビューションガイド（日本語）
+├── SECURITY.md                  # セキュリティポリシー（日本語）
+├── CHANGELOG.md                 # バージョン履歴（日本語）
 ├── docs/                        # 補足資料
 │   ├── README.md               # ガイドの索引
 │   ├── conversion/             # 変換ガイド
@@ -270,20 +270,20 @@ https://youtu.be/DilSKvi4aQw
 
 ## ドキュメント
 
-- [CHANGELOG_ja.md](CHANGELOG_ja.md) - バージョン履歴
-- [CONTRIBUTING_ja.md](CONTRIBUTING_ja.md) - コントリビューション方法
-- [SECURITY_ja.md](SECURITY_ja.md) - セキュリティポリシー
+- [CHANGELOG.md](CHANGELOG.md) - バージョン履歴
+- [CONTRIBUTING.md](CONTRIBUTING.md) - コントリビューション方法
+- [SECURITY.md](SECURITY.md) - セキュリティポリシー
 
 ## セキュリティ
 
-セキュリティに関する詳細は [SECURITY_ja.md](SECURITY_ja.md) を参照してください。
+セキュリティに関する詳細は [SECURITY.md](SECURITY.md) を参照してください。
 
 - 本リポジトリはドキュメントとサンプルファイルのみで構成されており、実行可能なコードは含みません
 - 脆弱性を発見した場合は、公開 Issue ではなくメールでご報告ください（info@elvez.co.jp）
 
 ## コントリビューション
 
-コントリビューションを歓迎します。詳細は [CONTRIBUTING_ja.md](CONTRIBUTING_ja.md) を参照してください。
+コントリビューションを歓迎します。詳細は [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 - バグ報告・誤字修正: [GitHub Issues](https://github.com/elvezjp/SDD/issues)
 - 機能提案（新サンプル/ガイドの追加など）: [GitHub Issues](https://github.com/elvezjp/SDD/issues)
@@ -291,7 +291,7 @@ https://youtu.be/DilSKvi4aQw
 
 ## 変更履歴
 
-詳細は [CHANGELOG_ja.md](CHANGELOG_ja.md) を参照してください。
+詳細は [CHANGELOG.md](CHANGELOG.md) を参照してください。
 
 ## 開発の背景
 
