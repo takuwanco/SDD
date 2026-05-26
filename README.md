@@ -1,7 +1,5 @@
 # SDD（仕様駆動開発） 練習用リポジトリ
 
-[English](./README_en.md) | [日本語](./README.md)
-
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
@@ -114,8 +112,7 @@ Cursor の最新版では、**メニューに「File > Clone Repository」が表
 
 ```
 SDD/
-├── README.md                    # このファイル（日本語版）
-├── README_en.md                 # 英語版
+├── README.md                    # このファイル
 ├── LICENSE                      # MITライセンス
 ├── CONTRIBUTING.md              # コントリビューションガイド（日本語）
 ├── SECURITY.md                  # セキュリティポリシー（日本語）

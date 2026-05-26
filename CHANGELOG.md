@@ -1,5 +1,3 @@
-[English](./CHANGELOG_en.md) | [日本語](./CHANGELOG.md)
-
 # 変更履歴
 
 このプロジェクトのすべての重要な変更を記録します。

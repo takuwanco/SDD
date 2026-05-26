@@ -1,5 +1,3 @@
-[English](./SECURITY_en.md) | [日本語](./SECURITY.md)
-
 # セキュリティポリシー
 
 ## サポートバージョン
